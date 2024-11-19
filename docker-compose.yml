@@ -1,0 +1,17 @@
+version: '3.8'  # Use a more recent version for better features
+
+services:
+  #     
+  task_filter:
+    build:
+      context: .
+      dockerfile: Dockerfile.task_filter
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./:/app
+      - filter_preferences:/app/data
+    command: ["python", "task_filter.py"]
+
+volumes:
+  filter_preferences:
